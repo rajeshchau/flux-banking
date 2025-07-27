@@ -204,7 +204,7 @@ export function BankingSidebar() {
                       `flex items-center gap-3 px-3 py-2 rounded-xl transition-all duration-300 ${
                         isActive
                           ? "bg-primary text-primary-foreground shadow-lg font-medium"
-                          : "hover:bg-accent hover:text-accent-foreground text-sidebar-foreground"
+                                                   : "hover:bg-accent text-sidebar-foreground hover:text-sidebar-foreground"
                       }`
                     }
                   >
@@ -217,7 +217,7 @@ export function BankingSidebar() {
                 <SidebarMenuButton asChild>
                   <motion.button 
                     onClick={handleLogout}
-                    className="flex items-center gap-3 px-3 py-2 rounded-xl transition-all duration-300 hover:bg-destructive/20 text-destructive hover:text-destructive w-full font-medium text-left"
+                     className="flex items-center gap-3 px-3 py-2 rounded-xl transition-all duration-300 hover:bg-destructive/10 text-destructive hover:text-destructive w-full"
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
                   >
@@ -231,7 +231,7 @@ export function BankingSidebar() {
         </SidebarGroup>
 
         {/* Collapse Toggle */}
-        <div className="mt-4 pt-4 border-t border-sidebar-border">
+       <div className="mt-4 pt-4 border-t border-sidebar-border">
           <SidebarTrigger className="w-full hover:bg-sidebar-accent p-2 rounded-lg">
               <ChevronRight 
               className={`h-4 w-4 transition-transform duration-300 ${
