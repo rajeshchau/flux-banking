@@ -33,10 +33,10 @@ export function TopNavigation() {
   };
 
   return (
-    <header className="glass-nav h-16 px-6 flex items-center justify-between border-b border-white/10">
+    <header className="h-16 px-6 flex items-center justify-between border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       {/* Left side - Mobile trigger and search */}
       <div className="flex items-center gap-4 flex-1">
-        <SidebarTrigger className="md:hidden glass-button p-2">
+        <SidebarTrigger className="md:hidden">
           <Menu className="h-4 w-4" />
         </SidebarTrigger>
         
@@ -44,7 +44,7 @@ export function TopNavigation() {
           <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
           <Input
             placeholder="Search transactions, cards..."
-            className="pl-10 glass-card border-white/20 focus:border-primary/50"
+            className="pl-10 bg-background border-border focus:border-primary"
           />
         </div>
       </div>
@@ -52,7 +52,7 @@ export function TopNavigation() {
       {/* Right side - Actions and profile */}
       <div className="flex items-center gap-3">
         {/* Quick Actions */}
-        <Button variant="ghost" size="icon" className="glass-button relative">
+        <Button variant="ghost" size="icon" className="hover:bg-accent">
           <Globe className="h-4 w-4" />
         </Button>
 
@@ -60,7 +60,7 @@ export function TopNavigation() {
           variant="ghost" 
           size="icon" 
           onClick={toggleTheme}
-          className="glass-button"
+          className="hover:bg-accent"
         >
           {isDark ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
         </Button>
@@ -68,7 +68,7 @@ export function TopNavigation() {
         {/* Notifications */}
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
-            <Button variant="ghost" size="icon" className="glass-button relative">
+            <Button variant="ghost" size="icon" className="hover:bg-accent relative">
               <Bell className="h-4 w-4" />
               {notifications > 0 && (
                 <Badge 
@@ -80,7 +80,7 @@ export function TopNavigation() {
               )}
             </Button>
           </DropdownMenuTrigger>
-          <DropdownMenuContent align="end" className="w-80 glass-card">
+          <DropdownMenuContent align="end" className="w-80 bg-popover border-border">
             <DropdownMenuLabel>Notifications</DropdownMenuLabel>
             <DropdownMenuSeparator />
             <DropdownMenuItem className="flex flex-col items-start p-4">
@@ -110,7 +110,7 @@ export function TopNavigation() {
         {/* Profile Menu */}
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
-            <Button variant="ghost" className="glass-button p-1">
+            <Button variant="ghost" className="hover:bg-accent p-1">
               <Avatar className="h-8 w-8">
                 <AvatarImage src="/placeholder.svg" />
                 <AvatarFallback className="bg-primary text-primary-foreground text-sm">
@@ -119,7 +119,7 @@ export function TopNavigation() {
               </Avatar>
             </Button>
           </DropdownMenuTrigger>
-          <DropdownMenuContent align="end" className="w-56 glass-card">
+          <DropdownMenuContent align="end" className="w-56 bg-popover border-border">
             <DropdownMenuLabel>My Account</DropdownMenuLabel>
             <DropdownMenuSeparator />
             <DropdownMenuItem>
@@ -131,7 +131,7 @@ export function TopNavigation() {
               <span>Settings</span>
             </DropdownMenuItem>
             <DropdownMenuSeparator />
-            <DropdownMenuItem className="text-red-600">
+            <DropdownMenuItem className="text-destructive">
               <span>Sign out</span>
             </DropdownMenuItem>
           </DropdownMenuContent>
