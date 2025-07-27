@@ -5,12 +5,15 @@ import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Checkbox } from "@/components/ui/checkbox";
-import { Eye, EyeOff, Wallet, Fingerprint, Smartphone } from "lucide-react";
+import { Eye, EyeOff, Wallet, Fingerprint, Smartphone, Loader2 } from "lucide-react";
+import { useAuth } from "@/contexts/AuthContext";
 import { useNavigate } from "react-router-dom";
+import { useToast } from "@/hooks/use-toast";
 import heroImage from "@/assets/banking-hero.jpg";
 
 const AuthPage = () => {
   const [showPassword, setShowPassword] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -18,18 +21,105 @@ const AuthPage = () => {
     phone: "",
     confirmPassword: ""
   });
+  
+  const { login, register } = useAuth();
   const navigate = useNavigate();
+  const { toast } = useToast();
 
-  const handleLogin = (e: React.FormEvent) => {
+  const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Simulate login
-    navigate("/");
+    
+    if (!formData.email || !formData.password) {
+      toast({
+        title: "Error",
+        description: "Please fill in all fields",
+        variant: "destructive"
+      });
+      return;
+    }
+
+    setIsLoading(true);
+    
+    try {
+      const success = await login(formData.email, formData.password);
+      
+      if (success) {
+        toast({
+          title: "Success!",
+          description: "Welcome back to FluxBank",
+        });
+        navigate("/");
+      } else {
+        toast({
+          title: "Login Failed",
+          description: "Invalid credentials. Please try again.",
+          variant: "destructive"
+        });
+      }
+    } catch (error) {
+      toast({
+        title: "Error",
+        description: "Something went wrong. Please try again.",
+        variant: "destructive"
+      });
+    } finally {
+      setIsLoading(false);
+    }
   };
 
-  const handleSignup = (e: React.FormEvent) => {
+  const handleSignup = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Simulate signup
-    navigate("/");
+    
+    if (!formData.name || !formData.email || !formData.password || !formData.confirmPassword) {
+      toast({
+        title: "Error", 
+        description: "Please fill in all fields",
+        variant: "destructive"
+      });
+      return;
+    }
+
+    if (formData.password !== formData.confirmPassword) {
+      toast({
+        title: "Error",
+        description: "Passwords do not match",
+        variant: "destructive"
+      });
+      return;
+    }
+
+    setIsLoading(true);
+
+    try {
+      const success = await register({
+        firstName: formData.name.split(' ')[0],
+        lastName: formData.name.split(' ')[1] || '',
+        email: formData.email,
+        phone: formData.phone
+      });
+
+      if (success) {
+        toast({
+          title: "Account Created!",
+          description: "Welcome to FluxBank. You are now logged in.",
+        });
+        navigate("/");
+      } else {
+        toast({
+          title: "Signup Failed",
+          description: "Could not create account. Please try again.",
+          variant: "destructive"
+        });
+      }
+    } catch (error) {
+      toast({
+        title: "Error",
+        description: "Something went wrong. Please try again.",
+        variant: "destructive"
+      });
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -149,8 +239,19 @@ const AuthPage = () => {
                       </Button>
                     </div>
 
-                    <Button type="submit" className="w-full animated-gradient text-white">
-                      Sign In
+                    <Button 
+                      type="submit" 
+                      className="w-full animated-gradient text-white"
+                      disabled={isLoading}
+                    >
+                      {isLoading ? (
+                        <>
+                          <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                          Signing In...
+                        </>
+                      ) : (
+                        "Sign In"
+                      )}
                     </Button>
 
                     <div className="text-center">
@@ -266,8 +367,19 @@ const AuthPage = () => {
                       </Label>
                     </div>
 
-                    <Button type="submit" className="w-full animated-gradient text-white">
-                      Create Account
+                    <Button 
+                      type="submit" 
+                      className="w-full animated-gradient text-white"
+                      disabled={isLoading}
+                    >
+                      {isLoading ? (
+                        <>
+                          <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                          Creating Account...
+                        </>
+                      ) : (
+                        "Create Account"
+                      )}
                     </Button>
 
                     <div className="text-center">
