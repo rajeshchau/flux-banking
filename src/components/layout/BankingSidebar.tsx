@@ -233,6 +233,12 @@ export function BankingSidebar() {
         {/* Collapse Toggle */}
         <div className="mt-4 pt-4 border-t border-sidebar-border">
           <SidebarTrigger className="w-full hover:bg-sidebar-accent p-2 rounded-lg">
+              <ChevronRight 
+              className={`h-4 w-4 transition-transform duration-300 ${
+                isCollapsed ? "" : "rotate-180"
+              }`} 
+            />
+          </SidebarTrigger>
         </div>
       </SidebarContent>
     </Sidebar>
