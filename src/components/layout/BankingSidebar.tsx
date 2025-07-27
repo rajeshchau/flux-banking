@@ -90,15 +90,15 @@ export function BankingSidebar() {
   const NavItem = ({ item, className = "" }: { item: any; className?: string }) => (
     <SidebarMenuItem>
       <SidebarMenuButton asChild className={className}>
-            <NavLink
-              to={item.url}
-              className={({ isActive }) =>
-                `flex items-center gap-3 px-3 py-2 rounded-xl transition-all duration-300 ${
-                  isActive
-                    ? "bg-sidebar-primary text-sidebar-primary-foreground shadow-lg"
-                    : "hover:bg-sidebar-accent text-sidebar-foreground/80 hover:text-sidebar-foreground"
-                }`
-              }
+        <NavLink
+          to={item.url}
+          className={({ isActive }) =>
+            `flex items-center gap-3 px-3 py-2 rounded-xl transition-all duration-300 ${
+              isActive
+                ? "bg-primary text-primary-foreground shadow-lg"
+                : "hover:bg-accent text-sidebar-foreground hover:text-sidebar-foreground"
+            }`
+          }
         >
           <motion.div
             whileHover={{ scale: 1.1 }}
@@ -143,11 +143,11 @@ export function BankingSidebar() {
             </Avatar>
             {!isCollapsed && (
               <div className="flex-1 min-w-0">
-                <p className="font-semibold text-sm text-foreground truncate">
+                <p className="font-semibold text-sm text-sidebar-foreground truncate">
                   {user?.firstName} {user?.lastName}
                 </p>
                 <div className="flex items-center gap-2">
-                  <p className="text-xs text-muted-foreground truncate">
+                  <p className="text-xs text-sidebar-foreground/70 truncate">
                     {user?.accountType} Account
                   </p>
                   {user?.isAdmin && (
@@ -163,7 +163,7 @@ export function BankingSidebar() {
 
         {/* Main Navigation */}
         <SidebarGroup className="flex-1">
-          <SidebarGroupLabel className={`${isCollapsed ? "sr-only" : ""} text-muted-foreground mb-2`}>
+          <SidebarGroupLabel className={`${isCollapsed ? "sr-only" : ""} text-sidebar-foreground/70 mb-2`}>
             {user?.isAdmin ? "Admin Panel" : "Banking Services"}
           </SidebarGroupLabel>
           <SidebarGroupContent>
@@ -186,8 +186,8 @@ export function BankingSidebar() {
                     className={({ isActive }) =>
                       `flex items-center gap-3 px-3 py-2 rounded-xl transition-all duration-300 ${
                         isActive
-                          ? "bg-sidebar-primary text-sidebar-primary-foreground shadow-lg"
-                          : "hover:bg-sidebar-accent text-sidebar-foreground/80 hover:text-sidebar-foreground"
+                          ? "bg-primary text-primary-foreground shadow-lg"
+                          : "hover:bg-accent text-sidebar-foreground hover:text-sidebar-foreground"
                       }`
                     }
                   >
@@ -203,8 +203,8 @@ export function BankingSidebar() {
                     className={({ isActive }) =>
                       `flex items-center gap-3 px-3 py-2 rounded-xl transition-all duration-300 ${
                         isActive
-                          ? "bg-sidebar-primary text-sidebar-primary-foreground shadow-lg"
-                          : "hover:bg-sidebar-accent text-sidebar-foreground/80 hover:text-sidebar-foreground"
+                          ? "bg-primary text-primary-foreground shadow-lg"
+                          : "hover:bg-accent text-sidebar-foreground hover:text-sidebar-foreground"
                       }`
                     }
                   >
