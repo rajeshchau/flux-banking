@@ -95,8 +95,8 @@ export function BankingSidebar() {
             className={({ isActive }) =>
               `flex items-center gap-3 px-3 py-2 rounded-xl transition-all duration-300 ${
                 isActive
-                  ? "bg-primary text-primary-foreground shadow-lg"
-                  : "hover:bg-secondary text-foreground hover:text-foreground"
+                  ? "bg-primary text-primary-foreground shadow-lg font-medium"
+                  : "hover:bg-accent hover:text-accent-foreground text-sidebar-foreground"
               }`
             }
         >
@@ -186,8 +186,8 @@ export function BankingSidebar() {
                     className={({ isActive }) =>
                       `flex items-center gap-3 px-3 py-2 rounded-xl transition-all duration-300 ${
                         isActive
-                          ? "bg-primary text-primary-foreground shadow-lg"
-                          : "hover:bg-secondary text-foreground hover:text-foreground"
+                          ? "bg-primary text-primary-foreground shadow-lg font-medium"
+                          : "hover:bg-accent hover:text-accent-foreground text-sidebar-foreground"
                       }`
                     }
                   >
@@ -203,8 +203,8 @@ export function BankingSidebar() {
                     className={({ isActive }) =>
                       `flex items-center gap-3 px-3 py-2 rounded-xl transition-all duration-300 ${
                         isActive
-                          ? "bg-primary text-primary-foreground shadow-lg"
-                          : "hover:bg-secondary text-foreground hover:text-foreground"
+                          ? "bg-primary text-primary-foreground shadow-lg font-medium"
+                          : "hover:bg-accent hover:text-accent-foreground text-sidebar-foreground"
                       }`
                     }
                   >
@@ -217,7 +217,7 @@ export function BankingSidebar() {
                 <SidebarMenuButton asChild>
                   <motion.button 
                     onClick={handleLogout}
-                    className="flex items-center gap-3 px-3 py-2 rounded-xl transition-all duration-300 hover:bg-destructive/20 text-destructive hover:text-destructive w-full font-medium"
+                    className="flex items-center gap-3 px-3 py-2 rounded-xl transition-all duration-300 hover:bg-destructive/20 text-destructive hover:text-destructive w-full font-medium text-left"
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
                   >
@@ -231,8 +231,8 @@ export function BankingSidebar() {
         </SidebarGroup>
 
         {/* Collapse Toggle */}
-        <div className="mt-4 pt-4 border-t border-border">
-          <SidebarTrigger className="w-full hover:bg-secondary p-2 rounded-lg text-foreground">
+        <div className="mt-4 pt-4 border-t border-sidebar-border">
+          <SidebarTrigger className="w-full hover:bg-accent hover:text-accent-foreground p-2 rounded-lg text-sidebar-foreground">
             <ChevronRight 
               className={`h-4 w-4 transition-transform duration-300 ${
                 isCollapsed ? "" : "rotate-180"
