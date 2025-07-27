@@ -186,8 +186,8 @@ export function BankingSidebar() {
                     className={({ isActive }) =>
                       `flex items-center gap-3 px-3 py-2 rounded-xl transition-all duration-300 ${
                         isActive
-                          ? "bg-primary text-primary-foreground shadow-lg font-medium"
-                          : "hover:bg-accent hover:text-accent-foreground text-sidebar-foreground"
+                          ? "bg-primary text-primary-foreground shadow-lg"
+                          : "hover:bg-accent text-sidebar-foreground hover:text-sidebar-foreground"
                       }`
                     }
                   >
