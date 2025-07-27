@@ -4,6 +4,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
+import AuthPage from "./pages/AuthPage";
 import Transfer from "./pages/Transfer";
 import Transactions from "./pages/Transactions";
 import Cards from "./pages/Cards";
@@ -23,6 +24,7 @@ const App = () => (
       <Sonner />
       <BrowserRouter>
         <Routes>
+          <Route path="/auth" element={<AuthPage />} />
           <Route path="/" element={<Index />} />
           <Route path="/transfer" element={<Transfer />} />
           <Route path="/transactions" element={<Transactions />} />
@@ -32,7 +34,6 @@ const App = () => (
           <Route path="/support" element={<Support />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/settings" element={<Settings />} />
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
