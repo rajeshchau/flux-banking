@@ -90,15 +90,15 @@ export function BankingSidebar() {
   const NavItem = ({ item, className = "" }: { item: any; className?: string }) => (
     <SidebarMenuItem>
       <SidebarMenuButton asChild className={className}>
-        <NavLink
-          to={item.url}
-          className={({ isActive }) =>
-            `flex items-center gap-3 px-3 py-2 rounded-xl transition-all duration-300 ${
-              isActive
-                ? "bg-primary text-primary-foreground shadow-lg"
-                : "hover:bg-accent text-sidebar-foreground hover:text-sidebar-foreground"
-            }`
-          }
+          <NavLink
+            to={item.url}
+            className={({ isActive }) =>
+              `flex items-center gap-3 px-3 py-2 rounded-xl transition-all duration-300 ${
+                isActive
+                  ? "bg-primary text-primary-foreground shadow-lg"
+                  : "hover:bg-secondary text-foreground hover:text-foreground"
+              }`
+            }
         >
           <motion.div
             whileHover={{ scale: 1.1 }}
@@ -187,7 +187,7 @@ export function BankingSidebar() {
                       `flex items-center gap-3 px-3 py-2 rounded-xl transition-all duration-300 ${
                         isActive
                           ? "bg-primary text-primary-foreground shadow-lg"
-                          : "hover:bg-accent text-sidebar-foreground hover:text-sidebar-foreground"
+                          : "hover:bg-secondary text-foreground hover:text-foreground"
                       }`
                     }
                   >
@@ -204,7 +204,7 @@ export function BankingSidebar() {
                       `flex items-center gap-3 px-3 py-2 rounded-xl transition-all duration-300 ${
                         isActive
                           ? "bg-primary text-primary-foreground shadow-lg"
-                          : "hover:bg-accent text-sidebar-foreground hover:text-sidebar-foreground"
+                          : "hover:bg-secondary text-foreground hover:text-foreground"
                       }`
                     }
                   >
@@ -217,7 +217,7 @@ export function BankingSidebar() {
                 <SidebarMenuButton asChild>
                   <motion.button 
                     onClick={handleLogout}
-                    className="flex items-center gap-3 px-3 py-2 rounded-xl transition-all duration-300 hover:bg-destructive/10 text-destructive hover:text-destructive w-full"
+                    className="flex items-center gap-3 px-3 py-2 rounded-xl transition-all duration-300 hover:bg-destructive/20 text-destructive hover:text-destructive w-full font-medium"
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
                   >
@@ -231,8 +231,8 @@ export function BankingSidebar() {
         </SidebarGroup>
 
         {/* Collapse Toggle */}
-        <div className="mt-4 pt-4 border-t border-sidebar-border">
-          <SidebarTrigger className="w-full hover:bg-sidebar-accent p-2 rounded-lg">
+        <div className="mt-4 pt-4 border-t border-border">
+          <SidebarTrigger className="w-full hover:bg-secondary p-2 rounded-lg text-foreground">
             <ChevronRight 
               className={`h-4 w-4 transition-transform duration-300 ${
                 isCollapsed ? "" : "rotate-180"
