@@ -2,41 +2,67 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* Banking Glassmorphism Design System */
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* Brand Colors - Deep Blue Banking Theme */
+    --background: 225 100% 98%;
+    --foreground: 225 84% 8%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100% / 0.8;
+    --card-foreground: 225 84% 8%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 100% / 0.95;
+    --popover-foreground: 225 84% 8%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    --primary: 225 84% 25%;
+    --primary-foreground: 0 0% 100%;
+    --primary-glow: 225 100% 65%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 225 20% 92%;
+    --secondary-foreground: 225 84% 25%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted: 225 20% 96%;
+    --muted-foreground: 225 16% 50%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --accent: 225 100% 65%;
+    --accent-foreground: 0 0% 100%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --success: 142 76% 36%;
+    --success-foreground: 0 0% 100%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --warning: 38 92% 50%;
+    --warning-foreground: 0 0% 100%;
 
-    --radius: 0.5rem;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 225 20% 88%;
+    --input: 225 20% 94%;
+    --ring: 225 84% 25%;
+
+    /* Glassmorphism Variables */
+    --glass-bg: 255 255 255 / 0.1;
+    --glass-border: 255 255 255 / 0.2;
+    --glass-shadow: 0 8px 32px rgba(31, 38, 135, 0.37);
+    --glass-backdrop: blur(8px);
+
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(225 84% 25%), hsl(225 100% 35%));
+    --gradient-secondary: linear-gradient(135deg, hsl(225 20% 96%), hsl(225 20% 92%));
+    --gradient-glass: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.3));
+
+    /* Shadows */
+    --shadow-glass: 0 8px 32px rgba(31, 38, 135, 0.37);
+    --shadow-card: 0 4px 16px rgba(0, 0, 0, 0.1);
+    --shadow-button: 0 4px 12px rgba(31, 38, 135, 0.3);
+
+    /* Animation */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-spring: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+
+    --radius: 1rem;
 
     --sidebar-background: 0 0% 98%;
 
@@ -56,41 +82,53 @@ All colors MUST be HSL.
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
+    /* Dark Mode Banking Theme */
+    --background: 225 84% 4%;
+    --foreground: 225 20% 95%;
 
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
+    --card: 225 84% 8% / 0.8;
+    --card-foreground: 225 20% 95%;
 
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
+    --popover: 225 84% 8% / 0.95;
+    --popover-foreground: 225 20% 95%;
 
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
+    --primary: 225 100% 65%;
+    --primary-foreground: 225 84% 4%;
+    --primary-glow: 225 100% 75%;
 
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
+    --secondary: 225 30% 15%;
+    --secondary-foreground: 225 20% 90%;
 
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
+    --muted: 225 30% 12%;
+    --muted-foreground: 225 20% 65%;
 
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
+    --accent: 225 100% 65%;
+    --accent-foreground: 225 84% 4%;
 
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
+    --success: 142 76% 40%;
+    --warning: 38 92% 55%;
+    --destructive: 0 84% 65%;
 
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --border: 225 30% 20%;
+    --input: 225 30% 15%;
+    --ring: 225 100% 65%;
+
+    /* Dark Glassmorphism */
+    --glass-bg: 0 0% 0% / 0.2;
+    --glass-border: 255 255 255 / 0.1;
+    --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
+
+    --gradient-primary: linear-gradient(135deg, hsl(225 100% 65%), hsl(225 84% 45%));
+    --gradient-glass: linear-gradient(135deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.15));
+
+    --sidebar-background: 225 84% 6%;
+    --sidebar-foreground: 225 20% 90%;
+    --sidebar-primary: 225 100% 65%;
+    --sidebar-primary-foreground: 225 84% 4%;
+    --sidebar-accent: 225 30% 12%;
+    --sidebar-accent-foreground: 225 20% 90%;
+    --sidebar-border: 225 30% 20%;
+    --sidebar-ring: 225 100% 65%;
   }
 }
 
@@ -101,5 +139,84 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground;
+    background-image: 
+      radial-gradient(at 40% 20%, hsl(225 100% 95%) 0px, transparent 50%),
+      radial-gradient(at 80% 0%, hsl(225 100% 92%) 0px, transparent 50%),
+      radial-gradient(at 0% 50%, hsl(225 100% 96%) 0px, transparent 50%);
+  }
+}
+
+@layer components {
+  /* Glassmorphism Components */
+  .glass-card {
+    @apply backdrop-blur-md bg-white/10 border border-white/20 rounded-2xl shadow-lg;
+    box-shadow: var(--shadow-glass);
+  }
+
+  .glass-button {
+    @apply backdrop-blur-md bg-white/10 border border-white/20 rounded-xl transition-all duration-300;
+    box-shadow: var(--shadow-button);
+  }
+
+  .glass-button:hover {
+    @apply bg-white/20 scale-105;
+    box-shadow: 0 8px 20px rgba(31, 38, 135, 0.5);
+  }
+
+  .glass-nav {
+    @apply backdrop-blur-lg bg-white/5 border-b border-white/10;
+  }
+
+  .animated-gradient {
+    background: var(--gradient-primary);
+    background-size: 200% 200%;
+    animation: gradient-shift 3s ease infinite;
+  }
+
+  .hover-lift {
+    @apply transition-transform duration-300 hover:scale-105 hover:shadow-lg;
+  }
+
+  .pulse-glow {
+    animation: pulse-glow 2s infinite;
+  }
+
+  /* Custom scrollbar */
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-track {
+    @apply bg-muted/30 rounded-full;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    @apply bg-primary/60 rounded-full;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    @apply bg-primary/80;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+@keyframes gradient-shift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { 
+    box-shadow: 0 0 20px rgba(59, 130, 246, 0.5);
+    transform: scale(1);
+  }
+  50% { 
+    box-shadow: 0 0 40px rgba(59, 130, 246, 0.8);
+    transform: scale(1.02);
   }
 }
